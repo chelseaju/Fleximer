@@ -28,9 +28,9 @@ A specialized fasta format contains a header line of a cluster ID and a set of m
 >clusterX|seq1|seq2
 ACGTACGTA|ACGAACGTA
 ```
-The partition can be based on sequence similarity, or functional annotation. By default, we partition the transcriptome based on sequence similarity as described in RNA-Skim[https://github.com/chelseaju/RNASkim]. A human transcriptome partition is provided in /Data/reference/human_60mers.fa.
+The partition can be based on sequence similarity, or functional annotation. By default, we partition the transcriptome based on sequence similarity as described in [RNA-Skim](https://github.com/chelseaju/RNASkim). A human transcriptome partition is provided in /Data/reference/human_60mers.fa.
 
-In RNA-Seq quantification stage, Fleximer takes the RNA-Seq data as input. Several examples simulated from polyester [https://github.com/alyssafrazee/polyester] are provided in Data/test.
+In RNA-Seq quantification stage, Fleximer takes the RNA-Seq data as input. Several examples simulated from [polyester](https://github.com/alyssafrazee/polyester) are provided in Data/test.
 
 ## *Sig-mer* Preparation
 Fleximer relies on the structure and properties of suffix tree to discover all the possible *sig-mers*. It then constructs *sig-mers* overlap graphs to guide the selection. sigmer_generation takes the specialized fasta file of transcriptome partition as input, and writes all *sig-mers* to an intermediate file. sigmer_selection takes the output from sigmer_generation and a desired read length to produces a list of representative *sig-mers* for the quantification stage.
