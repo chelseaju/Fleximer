@@ -7,6 +7,8 @@
 #include <set>
 #include <tuple>
 #include <unordered_map>
+#include <cstdio>
+
 
 using namespace std;
 using namespace helper;
@@ -337,9 +339,9 @@ void export_sigmer_detail(vector <sigmer_metadata> &sigmer_info, SEQCLUSTER *sc,
 
 int main(int argc, char* argv[])
 {
-        if(argc < 6)
+        if(argc < 5)
         {
-                cerr << "Usage: " << argv[0] << " SEQFILE SIGMERFILE READLEN OUTPREFIX CORE" << endl;
+                cerr << "Usage: " << argv[0] << " SEQFILE SIGMERFILE READLEN OUTPREFIX" << endl;
                 return 1;
         }
 
@@ -347,9 +349,10 @@ int main(int argc, char* argv[])
 	const char *sigmerfile = argv[2];
 	const int readlen = atoi(argv[3]);
 	const char *outdir = argv[4];
-	const int core = atoi(argv[5]);
+//	const int core = atoi(argv[5]);
 	int min_len = 25;
 	int max_len = 0.8*readlen;
+	const int core = 20;
 	
 	SEQCLUSTER *sc = new SEQCLUSTER(seqfile);
 	
@@ -398,6 +401,14 @@ int main(int argc, char* argv[])
 
 	}
 	sigmerfh.close();
+
+	echo("Clean up");
+	
+	// remove temparay files
+	for(int i = 0; i < core; i++){
+                string filename = string(outdir) + "_sigmers_" + to_string(i) + ".txt";
+		remove(filename.c_str());
+	}
 
 	cout << "Total sigmer count " << total_sigmer_count << endl;
 	cout << "Selected sigmer count " << selected_sigmer_count << endl;
