@@ -1,4 +1,4 @@
-# Fleximer
+Fleximer
 Fleximer: Accurate Quantification of RNA-Seq via Variable Length k-mers
 
 ## Download
@@ -37,7 +37,7 @@ Fleximer relies on the structure and properties of suffix tree to discover all t
 
 ```
 ./sigmer_generation Data/reference/human_60mers.fa Data/sigmers.txt
-./sigmer_selection Data/reference/human_60mers.fa Data/sigmers.txt 75 Data/selected_sigmer 20
+./sigmer_selection Data/reference/human_60mers.fa Data/sigmers.txt 75 Data/selected_sigmer
 ```
 
 ## RNA-Seq Quantification
